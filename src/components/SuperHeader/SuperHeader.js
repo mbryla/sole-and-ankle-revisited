@@ -1,29 +1,46 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS } from '../../constants';
+import { COLORS, QUERIES } from "../../constants";
 
-import SearchInput from '../SearchInput';
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
+import SearchInput from "../SearchInput";
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
 
 const SuperHeader = () => {
   return (
-    <Wrapper>
-      <MarketingMessage>
-        Free shipping on domestic orders over $75!
-      </MarketingMessage>
-      <SearchInput />
-      <HelpLink href="/help">Help</HelpLink>
-      <UnstyledButton>
-        <Icon id="shopping-bag" strokeWidth={1} />
-      </UnstyledButton>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <MarketingMessage>
+          Free shipping on domestic orders over $75!
+        </MarketingMessage>
+        <SearchInput />
+        <HelpLink href="/help">Help</HelpLink>
+        <UnstyledButton>
+          <Icon id="shopping-bag" strokeWidth={1} />
+        </UnstyledButton>
+      </Wrapper>
+      <DecorativeLine />
+    </>
   );
 };
 
+const DecorativeLine = styled.div`
+  width: 100%;
+  height: 4px;
+  background-color: ${COLORS.gray[900]};
+
+  @media (${QUERIES.laptopAndUp}) {
+    display: none;
+  }
+`;
+
 const Wrapper = styled.div`
-  display: flex;
+  display: none;
+  @media (${QUERIES.laptopAndUp}) {
+    display: flex;
+  }
+
   align-items: center;
   gap: 24px;
   font-size: 0.875rem;
